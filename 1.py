@@ -26,4 +26,4 @@ class Solution(object):
             if another in hashmap:
                 return[hashmap[another],index]
             hashmap[num] = index
-其实这个也不太算真的hashmap，就很气。
+其实这个也不太算真的hashmap，因为相同的数会被覆盖（key的唯一性）。然而因为只是“两数之和”所以没事。
