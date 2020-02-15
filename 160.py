@@ -26,3 +26,14 @@ class Solution:
             currentB = currentB.next
         return None
 #O(min(m,n))的艺术解法
+class Solution:
+    def getIntersectionNode(self, headA: ListNode, headB: ListNode) -> ListNode:
+        pA = headA
+        pB = headB
+        if not pA or not pB: return None
+        while pA != pB:
+            if not pA: pA = headB
+            else: pA = pA.next
+            if not pB: pB = headA
+            else: pB = pB.next
+        return pA
