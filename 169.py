@@ -32,6 +32,7 @@ class Solution(object):
                 return nums[i]
 
 #已知最好方法（很难想到）
+#摩尔投票法的基本思想很简单,在每一轮投票过程中,从数组中找出一对不同的元素,将其从数组中删除。这样不断的删除直到无法再进行投票
 class Solution(object):
     def majorityElement(self, nums):
         """
