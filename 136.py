@@ -14,6 +14,21 @@ class Solution(object):
         for i in hashmap:
             if hashmap[i] == 1:
                 return i
+#哈希表优化,O(n)
+class Solution(object):
+    def singleNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        hash_table = {}
+        for i in nums:
+            try:
+                hash_table.pop(i)
+            except:
+                hash_table[i] = 1
+        return hash_table.popitem()[0]
+
 
 #异或运算符的应用，O(n)
 class Solution(object):
