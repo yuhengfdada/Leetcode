@@ -38,7 +38,7 @@ class Solution(object):
             return True
             
 #递归写法。还是要遍历，但是关键在于：在遍历的时候就要同时寻找子数组。
- 懒得写了，抄个别人写的java
+#懒得写了，抄个别人写的java O(nlogn)
  public int pathSum(TreeNode root, int sum) {
         return pathSum(root, sum, new int[1000], 0);
     }
@@ -60,3 +60,34 @@ class Solution(object):
         int n2 = pathSum(root.right, sum, array, p + 1);
         return n + n1 + n2;
     }
+#联动560：和为k的子数组。
+#思想：令sum[i]等于i及之前所有元素的和。如果[i+1,j]的和为k，那么sum[j]-sum[i]=k。所以要找到以j结尾的和为k的子数组，
+#只要查找之前出现过几次sum[i]=sum[j]-k就行了。
+#Hashmap储存{sum:该sum出现的次数}
+#利用这个可以优化上面那个到O(n)?
+class Solution(object):
+    def subarraySum(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: int
+        """
+        Hashmap = {0:1}
+        Sum = 0
+        count = 0
+        for i in range(len(nums)):
+            Sum += nums[i]
+            if Sum in Hashmap:
+                Hashmap[Sum] += 1
+            else:
+                Hashmap[Sum] = 1
+            if (Sum - k) in Hashmap:
+                count += Hashmap[Sum-k]
+                if k == 0:
+                    count -= 1
+        return count
+
+
+
+
+
